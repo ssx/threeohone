@@ -1,0 +1,25 @@
+{
+    "name": "ssx/threeohone",
+    "description": "A simple Laravel package to deal with handling 301 redirects. ",
+    "type": "library",
+    "keywords": [ "laravel", "redirect", 301, 404 ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Scott Wilcox",
+            "email": "scott@dor.ky",
+            "homepage": "http://dor.ky"
+        }
+    ],
+    "require": {
+
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.4.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "SSX\\ThreeOhOne\\": "src/"
+        }
+    }
+}
