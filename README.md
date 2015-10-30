@@ -23,6 +23,6 @@ A path redirect will ignore the domain only use the requested path, ie:
 Which is useful on sites that have subdomains.
 
 
-
 #### Todo
-Add tests.
+Add caching
+Add tests
