@@ -55,7 +55,7 @@ class CheckForRedirect {
             $redirect->increment('hits');
 
             // Redirect off to where we're going
-            return RedirectFacade::to($url);
+            return RedirectFacade::to($url, 301);
         }
 
         // By default, continue afterwards and bail out
