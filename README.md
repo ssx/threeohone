@@ -24,5 +24,5 @@ Which is useful on sites that have subdomains.
 
 
 #### Todo
-Add caching
-Add tests
+ - Add caching
+ - Add tests
