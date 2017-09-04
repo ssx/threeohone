@@ -1,13 +1,24 @@
-<?php namespace SSX\ThreeOhOne\Models;
+<?php
+
+/*
+ * This file is part of ssx/threeohone
+ *
+ *  (c) Scott Wilcox <scott@dor.ky>
+ *
+ *  For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
+ *
+ */
+
+namespace SSX\ThreeOhOne\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Models
- * @package App\Models
+ * Class Models.
  */
-class Redirect extends Model {
-
+class Redirect extends Model
+{
     /**
      * @var string
      */
@@ -16,11 +27,10 @@ class Redirect extends Model {
     /**
      * @var array
      */
-    protected $fillable = ['type', 'status', 'from', 'to', 'hits' ];
+    protected $fillable = ['type', 'status', 'from', 'to', 'hits'];
 
     /**
      * @var bool
      */
     public $timestamps = true;
-
 }
