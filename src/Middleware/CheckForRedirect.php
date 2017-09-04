@@ -1,28 +1,41 @@
-<?php namespace SSX\ThreeOhOne\Middleware;
+<?php
+
+/*
+ * This file is part of ssx/threeohone
+ *
+ *  (c) Scott Wilcox <scott@dor.ky>
+ *
+ *  For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
+ *
+ */
+
+namespace SSX\ThreeOhOne\Middleware;
 
 use Closure;
-use SSX\ThreeOhOne\Models\Redirect;
 use Illuminate\Support\Facades\Redirect as RedirectFacade;
+use SSX\ThreeOhOne\Models\Redirect;
 
-class CheckForRedirect {
-
+class CheckForRedirect
+{
     /**
      * Handle an incoming request, check to see if we have a redirect in place for the requested URL
-     * and then redirect if we do have a match
+     * and then redirect if we do have a match.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure                 $next
+     *
      * @return mixed
      */
     public function handle($request, Closure $next)
     {
         // Get the full URL that has been requested, minus the protocol
-        $full_url = str_replace($request->getScheme()."://", "", $request->url());
+        $full_url = str_replace($request->getScheme().'://', '', $request->url());
 
         // Check for any results matching the full domain request
-        $results = Redirect::where("type", "domain")
-                            ->where("from", $full_url)
-                            ->where("status", "active");
+        $results = Redirect::where('type', 'domain')
+                            ->where('from', $full_url)
+                            ->where('status', 'active');
 
         if ($results->exists()) {
             // Get the first result back
@@ -39,9 +52,9 @@ class CheckForRedirect {
         }
 
         // Check for any results matching the path only
-        $results = Redirect::where("type", "path")
-            ->where("from", "/".$request->path())
-            ->where("status", "active");
+        $results = Redirect::where('type', 'path')
+            ->where('from', '/'.$request->path())
+            ->where('status', 'active');
 
         // If a redirect exists for this, process it and redirect
         if ($results->exists()) {
@@ -61,5 +74,4 @@ class CheckForRedirect {
         // By default, continue afterwards and bail out
         return $next($request);
     }
-
 }
